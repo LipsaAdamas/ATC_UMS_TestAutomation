@@ -57,10 +57,41 @@ public class UploadDocumentPage {
 	public void ClickOnAddFileMarkSheetOfSecondarySchool() {
 		moveToElementAndClick(MarkSheetOfSecondarySchool);
 	}
-	@FindBy(xpath = "//input[@name='document[6]']")
-	WebElement PassCertificate;
-	public void ClickOnAddFilePassCertificate() {
-		moveToElementAndClick(PassCertificate);
+	@FindBy(xpath="//input[@name='document[4]']")
+	WebElement MarkSheetOfSeniourSecondarySchool;
+	public void ClickOnAddFileMarkSheetOfSeniourSecondarySchool() {
+		moveToElementAndClick(MarkSheetOfSeniourSecondarySchool);
+	}
+	@FindBy(xpath="//input[@name='document[12]']")
+	WebElement GraduationMarkSheet;
+	public void ClickOnGraduationMarkSheet() {
+		moveToElementAndClick(GraduationMarkSheet);
+	}
+	@FindBy(xpath="//input[@name='document[14]']")
+	WebElement GraduationPassCertificate;
+	public void ClickOnGraduationPassCertificate() {
+		moveToElementAndClick(GraduationPassCertificate);
+	}
+	@FindBy(xpath="//input[@name='document[6]']")
+	WebElement PassCertificateXII;
+	public void ClickOnPassCertificateXII() {
+		moveToElementAndClick(PassCertificateXII);
+	}
+	@FindBy(xpath="//input[@name='document[11]']")
+	WebElement OtherPublicEntranceExam;
+	public void ClickOnOtherPublicEntranceExam() {
+		moveToElementAndClick(OtherPublicEntranceExam);
+	}
+	@FindBy(xpath="//input[@name='document[21]']")
+	WebElement JeeAllotmentLetter;
+	public void ClickOnJEEAllotmentLetter() {
+		moveToElementAndClick(JeeAllotmentLetter);
+	}
+	
+	@FindBy(xpath = "//input[@name='document[3]']")
+	WebElement PassCertificateX;
+	public void ClickOnAddFilePassCertificateX() {
+		moveToElementAndClick(PassCertificateX);
 	}
 	@FindBy(xpath="//input[@name='document[18]']")
 	WebElement DeplomaMarkSheet;
@@ -113,6 +144,11 @@ public class UploadDocumentPage {
 	public void ClickOnAddFilePassport() {
 		moveToElementAndClick(Passport);
 	}
+	@FindBy(xpath="//input[@name='document[38]']")
+	WebElement Affidavit;
+	public void ClickOnAffidavit() {
+		
+	}
 	@FindBy(xpath="//input[@name='document[31]']")
 	WebElement AddressProofOLocalGuardian;
 	public void ClickOnAddFileAddressProofOLocalGuardian() {
@@ -143,6 +179,11 @@ public class UploadDocumentPage {
 	public void ClickOnAddFilePhotoIdProofOFather() {
 		moveToElementAndClick(PhotoIdProofOFather);
 	}
+	@FindBy(xpath="//input[@name='document[25]']")
+	WebElement CourseCompletionCertificate;
+	public void ClickOnCourseCompletionCertificate() {
+		moveToElementAndClick(CourseCompletionCertificate);
+	}
 	@FindBy(xpath="//input[@name='document[24]']")
 	WebElement AllFeeReceipt;
 	public void ClickOnAddFileAllFeeReceipt() {
@@ -155,6 +196,14 @@ public class UploadDocumentPage {
 	}
 	@FindBy(xpath="//input[@name='document[20]']")
 	WebElement StatementOfPurposeDocument;
+	public void ClickOnStatementOfPurposeDocument() {
+		moveToElementAndClick(StatementOfPurposeDocument);
+	}
+	@FindBy(xpath="//button[@name='form_submit']")
+	WebElement UpdateNext;
+	public void ClickOnUpdateNext() {
+		moveToElementAndClick(UpdateNext);
+	}
 	@FindBy(xpath="//a[@href='https://ums-qa.adamasuniversity.ac.in/admission/feesPayment']")
 	WebElement FeesPayment;
 	public void ClickOnFeesPayment() {
@@ -180,5 +229,14 @@ public class UploadDocumentPage {
 	public void ClickOnBasicInformation() {
 		BasicInformation.click();
 	}
-	
+	@FindBy(xpath="//span[@class='username username-hide-on-mobile']")
+	WebElement UserName;
+	public void clickOnUserName() {
+		UserName.click();
+	}
+	@FindBy(xpath="//a[@href='https://ums-qa.adamasuniversity.ac.in/backend/logout']")
+	WebElement LogOut;
+	public void ClickOnLogOut() {
+		LogOut.click();
+	}
 }

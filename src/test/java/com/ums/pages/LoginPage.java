@@ -32,7 +32,7 @@ public class LoginPage {
 		PassWord.sendKeys(password);
 	}
 
-	@FindBy(xpath = "///button[@name='login']")
+	@FindBy(xpath = "//button[@name='login']")
 	WebElement Loginbtn;
 
 	// action on webelement

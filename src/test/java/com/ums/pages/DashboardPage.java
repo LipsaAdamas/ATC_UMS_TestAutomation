@@ -16,21 +16,21 @@ public class DashboardPage {
 	}
 
 	// identify webelement
-	@FindBy(xpath = "//span[@class='title\"][normalize-space()=\"Admission]")
+	@FindBy(xpath = "//span[@class='title'][normalize-space()='Admission']")
 	WebElement Admission;
 
 	// identify action on webelement
 	public void ExpandAdmission() {
 		Admission.click();
 	}
-	@FindBy(xpath = "///span[@class=\"title\"][normalize-space()='Course Wise Application']")
+	@FindBy(xpath = "//span[@class=\"title\"][normalize-space()='Course Wise Application']")
 	WebElement CourseWiseApplication;
 
 	// identify action on webelement
 	public void ClickOnCourseWiseApplication() {
 		CourseWiseApplication.click();
 	}
-	@FindBy(xpath = "///span[@class='title'][normalize-space()='Incomplete Application']")
+	@FindBy(xpath = "//span[@class='title'][normalize-space()='Incomplete Application']")
 	WebElement IncompleteApplication;
 
 	// identify action on webelement
@@ -85,5 +85,15 @@ public class DashboardPage {
 	// identify action on webelement
 	public void ClickOnApplicantList() {
 		ApplicantList.click();
+	}
+	@FindBy(xpath="//span[@class='username username-hide-on-mobile']")
+	WebElement UserName;
+	public void clickOnUserName() {
+		UserName.click();
+	}
+	@FindBy(xpath="//a[@href='https://ums-qa.adamasuniversity.ac.in/backend/logout']")
+	WebElement LogOut;
+	public void ClickOnLogOut() {
+		LogOut.click();
 	}
 }

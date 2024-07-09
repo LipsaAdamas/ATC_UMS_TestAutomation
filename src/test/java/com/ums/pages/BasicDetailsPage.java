@@ -1,11 +1,15 @@
 package com.ums.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
 
 public class BasicDetailsPage {
 	WebDriver ldriver;
@@ -17,6 +21,15 @@ public class BasicDetailsPage {
 		PageFactory.initElements(rdriver, this);
 	}
 
+	
+	
+	@FindBy(xpath="//div[@class='toast-message']")
+	WebElement OTPSuccessMessage;
+	public String getOTPSuccessToastMessage() throws InterruptedException {
+		Thread.sleep(1000);
+        // Return the text of the success message
+        return OTPSuccessMessage.getText();
+	}
 	
 	// identify webelement
 	@FindBy(xpath="//a[@class='dropdown-toggle'][@href='#']")
@@ -77,13 +90,19 @@ public class BasicDetailsPage {
 		Salutaion.sendKeys(salutaion);
 	}
 
-	@FindBy(id = "first_name")
+	@FindBy(xpath = "//input[@id='first_name']")
 	WebElement FirstName;
 
 	public void EnterFirstName(String firstname) {
 		FirstName.sendKeys(firstname);
 	}
-
+	public void ClearTexrOfFirstName() {
+		FirstName.clear();
+	}
+	public String getFirstName() {
+		return FirstName.getText();
+	}
+	
 	@FindBy(id = "middle_name")
 	WebElement MiddleName;
 
@@ -129,6 +148,40 @@ public class BasicDetailsPage {
 		Select dobyear = new Select(Dobyear);
 		dobyear.selectByVisibleText(year);
 	}
+	 public boolean isFieldNonEditable(WebElement field) {
+	        JavascriptExecutor js = (JavascriptExecutor) ldriver;
+	        try {
+	            String originalValue = (String) js.executeScript("return arguments[0].value", field);
+	            js.executeScript("arguments[0].value='test'", field);
+	            String newValue = (String) js.executeScript("return arguments[0].value", field);
+	            // Reset the value to original
+	            js.executeScript("arguments[0].value=arguments[1]", field, originalValue);
+	            return originalValue.equals(newValue);
+	        } catch (Exception e) {
+	            return true;
+	        }
+	    }
+
+	    public boolean isFieldNonClickable(WebElement field) {
+	        JavascriptExecutor js = (JavascriptExecutor) ldriver;
+	        try {
+	            js.executeScript("arguments[0].click();", field);
+	            return false;
+	        } catch (Exception e) {
+	            return true;
+	        }
+	    }
+
+	    public boolean isFieldNonSelectable(WebElement field) {
+	        JavascriptExecutor js = (JavascriptExecutor) ldriver;
+	        try {
+	            js.executeScript("arguments[0].select();", field);
+	            return false;
+	        } catch (Exception e) {
+	            return true;
+	        }
+	    }
+	
 
 	@FindBy(id = "aadhar")
 	WebElement aadhar;
@@ -188,6 +241,11 @@ public class BasicDetailsPage {
 	public void SelectCaste(String mycast) {
 		Select caste = new Select(Caste);
 		caste.selectByVisibleText(mycast);
+	}
+	@FindBy(xpath="(//input[@readonly='readonly'])[1]")
+	WebElement castValidationDate;
+	public void clickOnCastValidationDateFrom() {
+		castValidationDate.click();
 	}
 
 	@FindBy(id = "family_income_annual")

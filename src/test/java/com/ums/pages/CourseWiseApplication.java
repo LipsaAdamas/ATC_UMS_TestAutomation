@@ -1,6 +1,8 @@
 package com.ums.pages;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class CourseWiseApplication {
 	WebDriver ldriver;
+	public static String applicationNo;
 
 	// Constructor
 	public CourseWiseApplication(WebDriver rdriver) {
@@ -19,7 +22,7 @@ public class CourseWiseApplication {
 	}
 
 	// identify webelement
-	@FindBy(xpath = "//a[@class=\"expand\"]")
+	@FindBy(xpath = "//a[@class='expand']")
 	WebElement SearchApplication;
 
 	// identify action on webelement
@@ -27,7 +30,7 @@ public class CourseWiseApplication {
 		SearchApplication.click();
 	}
 
-	@FindBy(xpath = "//select[@id=\"academic_yr\"]")
+	@FindBy(xpath = "//select[@id='academic_yr']")
 	List<WebElement> AcademicYearMenu;
 
 	// identify action on webelement
@@ -54,7 +57,7 @@ public class CourseWiseApplication {
 		Mobile.sendKeys(mobileNum);
 	}
 
-	@FindBy(xpath = "//input[@id=\"application_no\"]")
+	@FindBy(xpath = "//input[@id='application_no']")
 	WebElement Application;
 
 	// Action on WebElement
@@ -73,6 +76,27 @@ public class CourseWiseApplication {
 			dropdown.selectByVisibleText(genderoptionText);
 		}
 	}
+
+	
+
+	@FindBy(xpath="//select[@name='academic_yr']")
+	private WebElement academicYearDropdown;
+	 public String getDefaultAcademicYear() {
+	        
+		 return academicYearDropdown.getAttribute("Select");
+	    }
+	 @FindBy(xpath="//input[@id='name']")
+	 private WebElement nameField;
+	 public String getDefaultName() {
+	        String defaultValue = nameField.getAttribute("value");
+	        
+	        if (defaultValue == null || defaultValue.isEmpty()) {
+	            return "Default value is empty";
+	        } else {
+	            return defaultValue;
+	        }
+	    }
+	
 
 	// Identify WebElement
 	@FindBy(xpath = "//span[@id='select2-t_mst_category_id-container']")
@@ -255,7 +279,7 @@ public class CourseWiseApplication {
 	}
 
 	// Identify WebElement
-	@FindBy(xpath = "//select[@id=\"applicant_cancel_reason_verification_status\"]")
+	@FindBy(xpath = "//select[@id='applicant_cancel_reason_verification_status']")
 	List<WebElement> ApplicantCancleReasonVerificationStatusMenu;
 
 	// Action on WebElement
@@ -266,21 +290,85 @@ public class CourseWiseApplication {
 			dropdown.selectByVisibleText(ApplicantCancleReasonVerificationStatusoptiontext);
 		}
 	}
+
 	// Identify WebElement
-	@FindBy(xpath = "//button[@id=\"btn_submit_search\"]")
+	@FindBy(xpath = "//button[@id='btn_submit_search']")
 	WebElement Search;
 
 	// Action on WebElement
-	public void ChickonSearch() {
+	public void ClickonSearch() {
 		Search.click();
 	}
-	// Identify WebElement
-		@FindBy(linkText = " Reset")
-		WebElement Reset;
+	public boolean isSearchButtonDisplayed() {
+		return  Search.isDisplayed();
+	}
 
-		// Action on WebElement
-		public void ChickonReset() {
-			Reset.click();
+	@FindBy(xpath = "//td[starts-with(text(), 'APP-')]")
+	WebElement ApplicationNum;
+
+	public void VerifyApplicationNumber() {
+		String text = ApplicationNum.getText();
+
+		// Print the text to verify
+		System.out.println("Text from the element: " + text);
+
+		// Regex pattern to extract the Application No.
+		String regex = "APP-\\d{4}-\\d{6}";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(text);
+
+		if (matcher.find()) {
+			applicationNo = matcher.group(0);
+
+		} else {
+			System.out.println("Application No. not found in the text.");
 		}
+	}
+
+	public String AppicationNumField() {
+		return ApplicationNum.getText();
+	}
+
+	// Identify WebElement
+	@FindBy(linkText = " Reset")
+	WebElement Reset;
+
+	// Action on WebElement
+	public void ChickonReset() {
+		Reset.click();
+	}
+	@FindBy(xpath="(//a[@data-original-title='Edit Application'])[1]")
+	WebElement EditApplication;
+	public void ClickOnEditApplication() {
+		EditApplication.click();
+	}
+	@FindBy(xpath="(//i[@class='fa fa-archive '])[1]")
+	WebElement DocumentViewAndVerify;
+	public void ClickOnDocumentViewAndVerify() {
+		DocumentViewAndVerify.click();
+	}
+	
+	@FindBy(xpath="(//div[contains(text(), 'Verified') or contains(text(), 'Not Verified')])[2]")
+	WebElement DocumentVerificationStatus;
+	
+	public String GetTextOfDocumentVerificationStatus() {
+		return DocumentVerificationStatus.getText();
+	}
+	@FindBy(xpath="(//div[contains(text(), 'Verified') or contains(text(), 'Not Verified')])[1]")
+	WebElement AdmissionPaymentStatus;
+	
+	public String GetTextOfAdmissionPaymentStatus() {
+		return AdmissionPaymentStatus.getText();
+	}
+	@FindBy(xpath="//span[@class='username username-hide-on-mobile']")
+	WebElement UserName;
+	public void clickOnUserName() {
+		UserName.click();
+	}
+	@FindBy(xpath="//a[@href='https://ums-qa.adamasuniversity.ac.in/backend/logout']")
+	WebElement LogOut;
+	public void ClickOnLogOut() {
+		LogOut.click();
+	}
 
 }

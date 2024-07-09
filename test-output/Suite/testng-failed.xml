@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="com.ums.utility.ExtentListenerClass"/>
+  </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="com.ums.admission.testcases.TC_RegistrationPageTest">
+      <class name="com.ums.testcases.TC1_NewApplicantRegestrationPageTest">
+        <methods>
+          <include name="TC1S_UMS_ConfirmPassword_MatchPassword"/>
+          <include name="setup"/>
+          <include name="TC1P_UMS_Password_ValidCriteria"/>
+          <include name="TC1R_UMS_ConfirmPassword_Mandatory"/>
+          <include name="TC1Q_UMS_Password_InvalidCriteria"/>
+          <include name="TC1T_UMS_ConfirmPassword_NonMatching"/>
+          <include name="TC1O_UMS_Password_Mandatory"/>
+          <include name="TC1M_UMS_MobileNumber_Mandatory"/>
+          <include name="TC1L_UMS_EmailAddress_InvalidFormat"/>
+          <include name="TC1N_UMS_MobileNumber_ValidNumbers"/>
+          <include name="Setup"/>
+          <include name="TC1U_UMS_TermsAndConditions_Mandatory"/>
+        </methods>
+      </class> <!-- com.ums.testcases.TC1_NewApplicantRegestrationPageTest -->
+      <class name="com.ums.testcases.TC3_AdminLogin_Admission_VerifyCouseWiseApplicationTest">
         <methods>
           <include name="setup"/>
-          <include name="Registration"/>
+          <include name="Login"/>
+          <include name="verifyEditApplicationFunctionalityAndLogout"/>
         </methods>
-      </class> <!-- com.ums.admission.testcases.TC_RegistrationPageTest -->
+      </class> <!-- com.ums.testcases.TC3_AdminLogin_Admission_VerifyCouseWiseApplicationTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

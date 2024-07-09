@@ -4,11 +4,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import java.time.Duration;
 
 public class OtpVerifyPage {
 
@@ -23,6 +26,31 @@ public class OtpVerifyPage {
 		PageFactory.initElements(rdriver, this);
 
 	}
+	@FindBy(xpath="//div[@class='alert alert-danger']")
+	WebElement OTPAlert;
+	public String getOTPAlert() {
+		return OTPAlert.getText();
+	}
+	@FindBy(id="r_span")
+	WebElement OTPTimer;
+	public String OTPTimer() {
+		return OTPTimer.getText();
+	}
+	@FindBy(xpath="//a[@id='resend']")
+	WebElement ResendOTPLink;
+	public void clickOnResendOTPLink() {
+		ResendOTPLink.click();
+	}
+	 public boolean isResendOTPLinkEnabledAfterWait() {
+	        // Wait for 1 minute (60 seconds)
+	        WebDriverWait wait = new WebDriverWait(ldriver, Duration.ofSeconds(60));
+
+	        // Wait until the Resend OTP link is enabled
+	        wait.until(ExpectedConditions.elementToBeClickable(ResendOTPLink));
+
+	        // Return the enabled state of the Resend OTP link
+	        return ResendOTPLink.isEnabled();
+	    }
 
 	@FindBy(xpath = "//h5[@style='text-align: center;']")
 	WebElement AppNo;
@@ -44,6 +72,9 @@ public class OtpVerifyPage {
 		} else {
 			System.out.println("Application No. not found in the text.");
 		}
+	}
+	public String getApplicationNumber() {
+		return AppNo.getText();
 	}
 
 	@FindBy(id = "otp")

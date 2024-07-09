@@ -10,10 +10,10 @@ import com.ums.pages.ApplicantLoginPage;
 import com.ums.pages.BasicDetailsPage;
 import com.ums.pages.OtpVerifyPage;
 import com.ums.pages.ReadInstuctionPage;
-import com.ums.pages.RegestationPage;
+import com.ums.pages.RegistationPage;
 
 public class RegPageTest extends BaseClass {
-    RegestationPage rp;
+    RegistationPage rp;
     String expectedUserName = "LIPSA DAS  ";
     JavascriptExecutor js;
     ReadInstuctionPage ip;

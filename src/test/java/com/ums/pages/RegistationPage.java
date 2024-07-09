@@ -5,13 +5,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class RegestationPage {
+public class RegistationPage {
 	
 		// Create an Object of webdriver
 		WebDriver ldriver;
 
 		// Create constructor
-		public RegestationPage(WebDriver rdriver) {
+		public RegistationPage(WebDriver rdriver) {
 			ldriver = rdriver;
 			PageFactory.initElements(rdriver, this);
 
@@ -52,7 +52,7 @@ public class RegestationPage {
 		WebElement DobMonth;
 		public void SelectMonth() {
 			Select month = new Select(DobMonth);
-			month.selectByIndex(5);
+			month.selectByIndex(9);
 		}
 		@FindBy(id="dobyear")
 		WebElement DobYear;

@@ -3,12 +3,33 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.ums.admission.testcases.TC_VerifyBasigDetailsPage">
+      <class name="com.ums.testcases.TC1_NewApplicantRegestrationPageTest">
         <methods>
-          <include name="Registration" invocation-numbers="0 1 2 3 4 5 6 7 8"/>
+          <include name="TC1G_UMS_ProgrammeSelection_Mandatory"/>
+          <include name="TC1P_UMS_Password_ValidCriteria"/>
+          <include name="TC1I_UMS_AdmissionTo_DisplayList"/>
+          <include name="TC1A_UMS_FirstNameAndLastName_Mandatory"/>
+          <include name="TC1Q_UMS_Password_InvalidCriteria"/>
+          <include name="TC1O_UMS_Password_Mandatory"/>
+          <include name="TC1H_UMS_ProgrammeSelection_DisplayList"/>
+          <include name="TC1C_UMS_FirstNameLastName_InvalidInput"/>
+          <include name="TC1N_UMS_MobileNumber_ValidNumbers"/>
+          <include name="TC1S_UMS_ConfirmPassword_MatchPassword"/>
           <include name="setup"/>
+          <include name="TC1F_UMS_YearField_ValidNumbers"/>
+          <include name="TC1B_UMS_FirstNameLastName_ValidInput"/>
+          <include name="TC1J_UMS_EmailAddress_Mandatory"/>
+          <include name="TC1R_UMS_ConfirmPassword_Mandatory"/>
+          <include name="TC1E_UMS_MonthField_ValidMonth"/>
+          <include name="TC1K_UMS_EmailAddress_ValidFormat"/>
+          <include name="TC1T_UMS_ConfirmPassword_NonMatching"/>
+          <include name="TC1M_UMS_MobileNumber_Mandatory"/>
+          <include name="TC1D_UMS_DayField_ValidNumbers"/>
+          <include name="TC1L_UMS_EmailAddress_InvalidFormat"/>
+          <include name="TC1U_UMS_TermsAndConditions_Mandatory"/>
+          <include name="Setup"/>
         </methods>
-      </class> <!-- com.ums.admission.testcases.TC_VerifyBasigDetailsPage -->
+      </class> <!-- com.ums.testcases.TC1_NewApplicantRegestrationPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

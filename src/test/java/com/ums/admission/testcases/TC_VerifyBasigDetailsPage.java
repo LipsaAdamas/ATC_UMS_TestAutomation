@@ -18,7 +18,8 @@ import org.testng.Assert;
 import com.ums.pages.EducationalDetailsPage;
 import com.ums.pages.OtpVerifyPage;
 	import com.ums.pages.ReadInstuctionPage;
-	import com.ums.pages.RegestationPage;
+	import com.ums.pages.RegistationPage;
+import com.ums.pages.UploadDocumentPage;
 import com.ums.utility.AutoItUtil;
 import com.ums.utility.ReadExcelFile;
 
@@ -33,7 +34,7 @@ import com.ums.utility.ReadExcelFile;
 		@Test(enabled = false)
 		public void VerifyRegPage() throws InterruptedException {
 			
-			RegestationPage rp = new RegestationPage(driver);
+			RegistationPage rp = new RegistationPage(driver);
 			rp.EnterFirstName("Lipsa");
 			logger.info("First Name Entered");
 			rp.EnterMiddleName("Priyadarshani");
@@ -42,7 +43,7 @@ import com.ums.utility.ReadExcelFile;
 
 			//rp.SelectDay("14");
 			
-			rp.SelectMonth();
+			//rp.SelectMonth();
 			
 			//rp.SelectYear("1998");
 			logger.info("Date of Birth Entered");
@@ -88,7 +89,9 @@ import com.ums.utility.ReadExcelFile;
 		public void Registration(String FirstName, String MiddleName, String LastName, 
 				String Programme, String EmailAddress, String Password,
 				String ConfirmPassword,String expectedUserName) throws IOException, InterruptedException {
-			driver.get(applicantLoginUrl);
+			
+			
+			driver.get("https://ums-qa.adamasuniversity.ac.in/admission/login");
 			
 			
 			ApplicantLoginPage ap=new ApplicantLoginPage(driver);
@@ -99,7 +102,7 @@ import com.ums.utility.ReadExcelFile;
 			 js.executeScript("window.scrollBy(0, 1000)");
 			 Thread.sleep(3000);
 			ip.ClickOnReadInstucation();
-			RegestationPage rp = new RegestationPage(driver);
+			RegistationPage rp = new RegistationPage(driver);
 			rp.EnterFirstName(FirstName);
 			logger.info("First Name Entered");
 			rp.EnterMiddleName(MiddleName);
@@ -108,7 +111,7 @@ import com.ums.utility.ReadExcelFile;
 
 			Thread.sleep(1000);
 			rp.EnterDay("14");
-			rp.SelectMonth();
+			//rp.SelectMonth();
 			rp.EntertYear("1998");
 //			rp.SelectYear(DOBYear);
 			
@@ -212,6 +215,10 @@ import com.ums.utility.ReadExcelFile;
 			bp.EnterLastUniversity("BPUT");
 			bp.EnterRegYear("2018");
 			bp.EnterMigrationYear("2022");
+			
+			js = (JavascriptExecutor) driver;
+			 js.executeScript("window.scrollBy(0, 500)");
+			
 			bp.ClickOnSaveAndNext();
 			
 			ep=new EducationalDetailsPage(driver);
@@ -223,6 +230,7 @@ import com.ums.utility.ReadExcelFile;
 			ep.SelectYearOfPassing("2019");
 			ep.EnterNameOfInstitute("MITM");
 			ep.EnterNameOfBoard("HSE");
+			ep.ClickOnClass10th();
 			ep.ClickOnAddClass12();
 			ep.SelectMakingScheme12("CGPA OUT OF 10");
 			ep.EnterDivision12("First");
@@ -233,6 +241,104 @@ import com.ums.utility.ReadExcelFile;
 			ep.EnterNameOfInstitute12("MITM");
 			ep.EnterNameOfBoard12("HSE");
 			ep.ClickOnClass10th();
+			
+			ep.ClickOnUpdateNext();
+			
+			UploadDocumentPage up=new UploadDocumentPage(driver);
+			up.ClickOnAddFilePhotoIdProof();
+			
+			Thread.sleep(5000);
+		
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFileProofOfDob();
+			Thread.sleep(1000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFileProofOfDob();
+			Thread.sleep(1000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFileCastCertificate();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFileMarkSheetOfSecondarySchool();
+			Thread.sleep(3000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFilePassCertificateX();
+			Thread.sleep(3000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFileMarkSheetOfSeniourSecondarySchool();
+			Thread.sleep(3000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnPassCertificateXII();
+			Thread.sleep(3000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnOtherPublicEntranceExam();
+			Thread.sleep(3000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnJEEAllotmentLetter();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFileDeplomaMarkSheet();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnGraduationMarkSheet();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnGraduationPassCertificate();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFileAffidavitAnnexure1();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFileAffidavitAnnexure2();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFileMedicalCeritificate();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFileCollegeOrSchoolLeavingOrMigrationCertificate();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFileRankCardSection();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFileVisa();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFilePassport();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFileAddressProofOLocalGuardian();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			
+			up.ClickOnAddFilePhotoIdProofOLocalGuardian();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFileAddressProofOMother();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFilePhotoIdProofOMother();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFileAddressProofOFather();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFilePhotoIdProofOFather();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnCourseCompletionCertificate();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFileAllFeeReceipt();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnAddFileDisabilityCertificate();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			up.ClickOnStatementOfPurposeDocument();
+			Thread.sleep(5000);
+			AutoItUtil.executeAutoItScript("C://Users//lipsa//OneDrive//Desktop//Autoit//FileUpload.exe"+" "+"C:\\Users\\lipsa\\OneDrive\\Desktop\\UMS_Doc\\Doc.pdf");
+			
 			
 
 			//bp.ClickOnUserName();

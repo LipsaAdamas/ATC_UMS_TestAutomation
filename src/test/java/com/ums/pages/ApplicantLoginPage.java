@@ -19,5 +19,19 @@ public class ApplicantLoginPage  {
 	public void clickOnCreateNewAccount() {
 		CreateNewAccount.click();
 	}
-	
+	@FindBy(xpath="//input[@id='application_no']")
+	WebElement UserName;
+	public void enterUserName(String un) {
+		UserName.sendKeys(un);
+	}
+	@FindBy(xpath="//input[@id='password']")
+	WebElement password;
+	public void enterPassword(String pw) {
+		password.sendKeys(pw);
+	}
+	@FindBy(xpath="//button[@id='btn_login']")
+	WebElement Signin;
+	public void clickOnSignin() {
+		Signin.click();
+	}
 }

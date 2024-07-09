@@ -14,7 +14,7 @@ import com.ums.pages.ApplicantLoginPage;
 import com.ums.pages.BasicDetailsPage;
 import com.ums.pages.OtpVerifyPage;
 import com.ums.pages.ReadInstuctionPage;
-import com.ums.pages.RegestationPage;
+import com.ums.pages.RegistationPage;
 import com.ums.utility.ReadExcelFile;
 
 public class Demo2 extends BaseClass {
@@ -24,7 +24,7 @@ public class Demo2 extends BaseClass {
     // Test 1: Verify Page Title
     @Test
     public void verifyPageTitle() {
-        RegestationPage rp = new RegestationPage(driver);
+        RegistationPage rp = new RegistationPage(driver);
         String expectedTitle = "New Candidate - Registration";
         String actualTitle = rp.getPageTitle();
         assertEquals(actualTitle, expectedTitle, "Page title does not match, not on the registration page");
@@ -59,7 +59,7 @@ public class Demo2 extends BaseClass {
         Thread.sleep(3000);
         ip.ClickOnReadInstucation();
 
-        RegestationPage rp = new RegestationPage(driver);
+        RegistationPage rp = new RegistationPage(driver);
         rp.EnterFirstName(FirstName);
         rp.EnterMiddleName(MiddleName);
         rp.EnterLastName(LastName);
@@ -100,7 +100,7 @@ public class Demo2 extends BaseClass {
         Thread.sleep(3000);
         ip.ClickOnReadInstucation();
 
-        RegestationPage rp = new RegestationPage(driver);
+        RegistationPage rp = new RegistationPage(driver);
         rp.EnterFirstName(FirstName);
         rp.EnterMiddleName(MiddleName);
         rp.EnterLastName(LastName);
@@ -141,7 +141,7 @@ public class Demo2 extends BaseClass {
         Thread.sleep(3000);
         ip.ClickOnReadInstucation();
 
-        RegestationPage rp = new RegestationPage(driver);
+        RegistationPage rp = new RegistationPage(driver);
         rp.EnterFirstName(FirstName);
         rp.EnterMiddleName(MiddleName);
         rp.EnterLastName(LastName);
@@ -195,7 +195,7 @@ public class Demo2 extends BaseClass {
         Thread.sleep(3000);
         ip.ClickOnReadInstucation();
         
-        RegestationPage rp = new RegestationPage(driver);
+        RegistationPage rp = new RegistationPage(driver);
         rp.EnterFirstName(FirstName);
         logger.info("First Name Entered");
         rp.EnterMiddleName(MiddleName);

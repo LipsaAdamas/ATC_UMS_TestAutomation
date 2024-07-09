@@ -2,11 +2,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
 	<listeners>
-		<listener class-name="com.ums.utility.ExtentListenerClass"></listener>
+		<listener
+			class-name="com.ums.utility.ExtentListenerClass"></listener>
 	</listeners>
   <test name="Test">
     <classes>
-      <class name="com.ums.admission.testcases.TC_RegistrationPageTest"/>
+      <class name="com.ums.testcases.TC1_NewApplicantRegestrationPageTest"/>
+      <class name="com.ums.testcases.TC3_AdminLogin_Admission_VerifyCouseWiseApplicationTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
